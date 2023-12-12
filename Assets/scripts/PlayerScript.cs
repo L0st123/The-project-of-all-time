@@ -51,6 +51,15 @@ public class PlayerScript : MonoBehaviour
         {
             animator.SetBool("walk", false);
         }
+        if (Input.GetKey(KeyCode.LeftShift) == true)
+        {
+            animator.SetBool("run", true);
+            animator.SetBool("walk", false);
+        }
+        else
+        {
+            animator.SetBool("run", false);
+        }
 
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {

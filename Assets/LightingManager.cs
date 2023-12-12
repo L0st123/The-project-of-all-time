@@ -6,7 +6,7 @@ public class LightingManager : MonoBehaviour
     [SerializeField] private Light DirectionalLight;
     [SerializeField] private LightingPreset Preset;
     
-    [SerializeField, Range(0, 24)] private float TimeOfDay;
+    [SerializeField, Range(0, 96)] private float TimeOfDay;
 
 
     private void Update()
@@ -18,12 +18,12 @@ public class LightingManager : MonoBehaviour
         {
             
             TimeOfDay += Time.deltaTime;
-            TimeOfDay %= 24; 
-            UpdateLighting(TimeOfDay / 24f);
+            TimeOfDay %= 96; 
+            UpdateLighting(TimeOfDay / 96f);
         }
         else
         {
-            UpdateLighting(TimeOfDay / 24f);
+            UpdateLighting(TimeOfDay / 96f);
         }
     }
 
