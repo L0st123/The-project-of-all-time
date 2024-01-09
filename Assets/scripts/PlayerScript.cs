@@ -7,7 +7,7 @@ public class PlayerScript : MonoBehaviour
 {
     public Camera playerCamera;
     public float walkSpeed = 6f;
-    public float runSpeed = 12f;
+    public float runSpeed = 4f;
     public float jumpPower = 7f;
     public float gravity = 10f;
     public float lookSpeed = 2f;
@@ -29,6 +29,7 @@ public class PlayerScript : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -86,7 +87,7 @@ public class PlayerScript : MonoBehaviour
         {
             characterController.height = defaultHeight;
             walkSpeed = 1f;
-            runSpeed = 12f;
+            runSpeed = 4f;
         }
 
         characterController.Move(moveDirection * Time.deltaTime);
@@ -98,5 +99,11 @@ public class PlayerScript : MonoBehaviour
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
+        
+       
+    }
+    private void OnMouseDown()
+    {
+        animator.SetTrigger("punch");
     }
 }
